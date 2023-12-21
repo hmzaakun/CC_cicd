@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+  namespace: dev
+data:
+  setting1: "Pas de secret ici chef !" # Ici, on peut mettre des variables d'environnement
