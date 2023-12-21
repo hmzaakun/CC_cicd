@@ -1,0 +1,53 @@
+---
+- name: Installation de l'environnement de développement Web
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Updates packages
+      apt:
+        update_cache: yes
+      become: yes
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Updates packages
+      dnf:
+        name: '*'
+        state: latest
+      become: yes
+      when: ansible_pkg_mgr == 'dnf'
+
+    - name: Fish Installation
+      apt:
+        name: fish
+        state: present
+      become: yes
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Fish Installation
+      dnf:
+        name: fish
+        state: present
+      become: yes
+      when: ansible_pkg_mgr == 'dnf'
+
+    - name: Setting Fish as the default shell
+      command: chsh -s /usr/bin/fish
+      become: yes
+
+    - name: TMUX Installation
+      apt:
+        name: tmux
+        state: present
+      become: yes
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: TMUX Installation
+      dnf:
+        name: tmux
+        state: present
+      become: yes
+      when: ansible_pkg_mgr == 'dnf'
+
+  handlers:
+    - name: Restart user shell
+      command: exec su -l "{{ ansible_user }}" -c fish
