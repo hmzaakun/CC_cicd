@@ -45,4 +45,4 @@ Si vous souhaitez contribuer à ce projet, veuillez suivre les conventions de co
 
 ## Licence
 
-Ce projet est distribué sous la Licence [Nom de la Licence].
+Ce projet est distribué sous la Licence Hamza.
